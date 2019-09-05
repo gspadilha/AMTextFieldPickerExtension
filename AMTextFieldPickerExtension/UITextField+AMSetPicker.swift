@@ -22,7 +22,7 @@ public extension UITextField {
     }
     
     /// The `UIPickerView` for the text field. Set this to configure the `inputView` and `inputAccessoryView` for the text field.
-    public var pickerView: UIPickerView? {
+    var pickerView: UIPickerView? {
         get {
             return self.inputView as? UIPickerView
         }
@@ -32,7 +32,7 @@ public extension UITextField {
     }
     
     /// The `UIDatePicker` for the text field. Set this to configure the `inputView` and `inputAccessoryView` for the text field.
-    public var datePicker: UIDatePicker? {
+    var datePicker: UIDatePicker? {
         get {
             return self.inputView as? UIDatePicker
         }
@@ -85,7 +85,7 @@ public extension UITextField {
     
     /// The `NSDateFormatter` to use to set the text field's `text` when using the `datePicker`.
     /// Defaults to a date formatter with date format: "M/d/yy".
-    public var dateFormatter: DateFormatter {
+    var dateFormatter: DateFormatter {
         get {
             if let formatter = objc_getAssociatedObject(self, &AssociatedKeys.DateFormatter) as? DateFormatter {
                 return formatter
@@ -103,7 +103,7 @@ public extension UITextField {
     
     /// If set to `true` the `inputAccessoryView` toolbar will include a button to clear the text field.
     /// Defaults to `false`.
-    public var showPickerClearButton: Bool {
+    var showPickerClearButton: Bool {
         get {
             return objc_getAssociatedObject(self, &AssociatedKeys.ShowClearButton) as? Bool ?? false
         }
@@ -115,7 +115,7 @@ public extension UITextField {
     
     /// The title to display for the clear button on the `inputAccessoryView` toolbar.
     /// Defaults to "Clear".
-    public var clearButtonTitle: String {
+    var clearButtonTitle: String {
         get {
             return objc_getAssociatedObject(self, &AssociatedKeys.ClearButtonTitle) as? String ?? "Clear"
         }
@@ -131,7 +131,7 @@ public extension UITextField {
      
      - parameter sender: The "Done" button sending the action.
      */
-    @objc public func didPressPickerDoneButton(_ sender: AnyObject) {
+    @objc func didPressPickerDoneButton(_ sender: AnyObject) {
         guard pickerView != nil || datePicker != nil else { return }
         
         if pickerView != nil {
@@ -166,7 +166,7 @@ public extension UITextField {
      
      - parameter sender: The clear button sending the action.
      */
-    @objc public func didPressPickerClearButton(_ sender: AnyObject) {
+    @objc func didPressPickerClearButton(_ sender: AnyObject) {
         self.text = nil
         DispatchQueue.main.async(execute: { () -> Void in
             self.sendActions(for: .editingChanged)
