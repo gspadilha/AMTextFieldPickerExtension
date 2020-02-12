@@ -71,7 +71,8 @@ public extension UITextField {
     }
     
     fileprivate func createDoneButton() -> UIBarButtonItem {
-        return UIBarButtonItem(barButtonSystemItem: .done,
+        return UIBarButtonItem(title: "Fechar",
+                               style: .plain,
                                target: self,
                                action: #selector(UITextField.didPressPickerDoneButton(_:)))
     }
